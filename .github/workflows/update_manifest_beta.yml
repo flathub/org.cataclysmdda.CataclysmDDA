@@ -19,11 +19,9 @@ jobs:
         run: |
           RELEASE_DATA=$(curl -s https://api.github.com/repos/CleverRaven/Cataclysm-DDA/releases | jq -r '[.[] | select(.prerelease == true)] | .[0]')
           
-          # Извлекаем тег из данных релиза
           LATEST_TAG=$(echo "$RELEASE_DATA" | jq -r '.tag_name')
           echo "Latest tag is $LATEST_TAG"
           
-          # Извлекаем коммит из данных релиза
           LATEST_COMMIT=$(echo "$RELEASE_DATA" | jq -r '.target_commitish')
           echo "Latest commit is $LATEST_COMMIT"
           
@@ -39,11 +37,23 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
 
-      - name: Commit and push changes with tag in message
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create a new branch
         run: |
+          NEW_BRANCH="update-manifest-$LATEST_TAG"
+          git checkout -b $NEW_BRANCH
           git add org.cataclysmdda.CataclysmDDA.yml
           git commit -m "Update manifest with latest Cataclysm-DDA commit $LATEST_COMMIT ($LATEST_TAG)"
-          git push origin beta
+          git push -u origin $NEW_BRANCH
+
+      - name: Set NEW_BRANCH Environment Variable
+        run: echo "NEW_BRANCH=update-manifest-$LATEST_TAG" >> $GITHUB_ENV
+
+      - name: Create Pull Request
+        uses: repo-sync/pull-request@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          source_branch: ${{ env.NEW_BRANCH }}
+          destination_branch: beta
+          pr_title: "Update manifest with latest Cataclysm-DDA commit $LATEST_COMMIT ($LATEST_TAG)"
+          pr_body: "Automatically created PR to update manifest with the latest commit."
 
