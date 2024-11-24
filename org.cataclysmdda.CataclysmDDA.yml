@@ -27,7 +27,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/CleverRaven/Cataclysm-DDA.git
-        commit: "3a1e04656d51c79af87b5505b1b3c37867378cce"
+        commit: "08f04fd07f028219a65f2f1fc8e73719dc9c954e"
       - type: file
-        url: https://raw.githubusercontent.com/CleverRaven/Cataclysm-DDA/dedfc2e5310b505a9728098d1b59777cb8b1e861/data/xdg/org.cataclysmdda.CataclysmDDA.appdata.xml
-        sha256: ca7bf1a3a0598729440aaae73111ffa3992121fa19f0e36d988eee22055db29e
+        url: https://raw.githubusercontent.com/CleverRaven/Cataclysm-DDA/8747500dfb599e3407ab759609fc983f7ba9efe4/data/xdg/org.cataclysmdda.CataclysmDDA.appdata.xml
+        sha256: 701b269393633e4d41efb1c6b09f97bafaa7de629a4ec4ab2f23467c1952b080
