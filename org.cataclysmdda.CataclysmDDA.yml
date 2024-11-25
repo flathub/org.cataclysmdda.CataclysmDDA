@@ -1,6 +1,6 @@
 id: "org.cataclysmdda.CataclysmDDA"
 runtime: "org.freedesktop.Platform"
-runtime-version: '23.08'
+runtime-version: '24.08'
 sdk: org.freedesktop.Sdk
 command: cataclysm-tiles
 finish-args: 
@@ -18,6 +18,7 @@ modules:
         MAKE_ARGS: "PREFIX=/app LANGUAGES=all USE_XDG_DIR=1 TILES=1 SOUND=1 RELEASE=1 RUNTESTS=0 ASTYLE=0 LINTJSON=0"
     build-commands:
       - sed -i "/#WARNINGS = -w/c WARNINGS = -w" Makefile
+      - sed -i 's/-std=c++17/-std=c++14/g' Makefile
       - make -j $FLATPAK_BUILDER_N_JOBS $MAKE_ARGS
       - make $MAKE_ARGS localization
       - make $MAKE_ARGS install
@@ -27,7 +28,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/CleverRaven/Cataclysm-DDA.git
-        commit: "e0f2e5665ad6cb39e970b056dcccf8fff3aefc5d"
+        commit: "08f04fd07f028219a65f2f1fc8e73719dc9c954e"
       - type: file
-        url: https://raw.githubusercontent.com/CleverRaven/Cataclysm-DDA/dedfc2e5310b505a9728098d1b59777cb8b1e861/data/xdg/org.cataclysmdda.CataclysmDDA.appdata.xml
-        sha256: ca7bf1a3a0598729440aaae73111ffa3992121fa19f0e36d988eee22055db29e
+        url: https://raw.githubusercontent.com/CleverRaven/Cataclysm-DDA/8747500dfb599e3407ab759609fc983f7ba9efe4/data/xdg/org.cataclysmdda.CataclysmDDA.appdata.xml
+        sha256: 701b269393633e4d41efb1c6b09f97bafaa7de629a4ec4ab2f23467c1952b080
