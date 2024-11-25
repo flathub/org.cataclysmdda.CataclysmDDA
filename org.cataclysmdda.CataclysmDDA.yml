@@ -1,7 +1,7 @@
 id: "org.cataclysmdda.CataclysmDDA"
 runtime: "org.freedesktop.Platform"
 runtime-version: '24.08'
-sdk: org.freedesktop.Sdk//23.08
+sdk: org.freedesktop.Sdk
 command: cataclysm-tiles
 finish-args: 
   - --socket=pulseaudio
@@ -18,7 +18,7 @@ modules:
         MAKE_ARGS: "PREFIX=/app LANGUAGES=all USE_XDG_DIR=1 TILES=1 SOUND=1 RELEASE=1 RUNTESTS=0 ASTYLE=0 LINTJSON=0"
     build-commands:
       - sed -i "/#WARNINGS = -w/c WARNINGS = -w" Makefile
-      - make -j $FLATPAK_BUILDER_N_JOBS $MAKE_ARGS
+      - make -j $FLATPAK_BUILDER_N_JOBS -Wno-psabi $MAKE_ARGS
       - make $MAKE_ARGS localization
       - make $MAKE_ARGS install
       - install -Dm644 data/xdg/org.cataclysmdda.CataclysmDDA.svg /app/share/icons/hicolor/scalable/apps/org.cataclysmdda.CataclysmDDA.svg
