@@ -1,6 +1,6 @@
 id: "org.cataclysmdda.CataclysmDDA"
 runtime: "org.freedesktop.Platform"
-runtime-version: '23.08'
+runtime-version: '24.08'
 sdk: org.freedesktop.Sdk
 command: cataclysm-tiles
 finish-args: 
@@ -21,13 +21,7 @@ modules:
       - make -j $FLATPAK_BUILDER_N_JOBS $MAKE_ARGS
       - make $MAKE_ARGS localization
       - make $MAKE_ARGS install
-      - install -Dm644 data/xdg/org.cataclysmdda.CataclysmDDA.svg /app/share/icons/hicolor/scalable/apps/org.cataclysmdda.CataclysmDDA.svg
-      - install -Dm755 data/xdg/org.cataclysmdda.CataclysmDDA.desktop /app/share/applications/org.cataclysmdda.CataclysmDDA.desktop
-      - install -Dm644 org.cataclysmdda.CataclysmDDA.appdata.xml /app/share/metainfo/org.cataclysmdda.CataclysmDDA.appdata.xml
     sources:
       - type: git
         url: https://github.com/CleverRaven/Cataclysm-DDA.git
-        commit: "e0f2e5665ad6cb39e970b056dcccf8fff3aefc5d"
-      - type: file
-        url: https://raw.githubusercontent.com/CleverRaven/Cataclysm-DDA/dedfc2e5310b505a9728098d1b59777cb8b1e861/data/xdg/org.cataclysmdda.CataclysmDDA.appdata.xml
-        sha256: ca7bf1a3a0598729440aaae73111ffa3992121fa19f0e36d988eee22055db29e
+        tag: cdda-0.I-2025-07-31-1856
