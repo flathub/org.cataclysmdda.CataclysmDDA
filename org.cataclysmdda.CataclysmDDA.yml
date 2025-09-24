@@ -24,4 +24,4 @@ modules:
     sources:
       - type: git
         url: https://github.com/CleverRaven/Cataclysm-DDA.git
-        tag: cdda-0.I-2025-09-04-1735
+        tag: cdda-0.I-2025-09-18-0115
