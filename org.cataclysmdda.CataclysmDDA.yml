@@ -19,6 +19,8 @@ modules:
     build-options:
       env:
         MAKE_ARGS: "PREFIX=/app LANGUAGES=all USE_XDG_DIR=1 TILES=1 SOUND=1 RELEASE=1 RUNTESTS=0 ASTYLE=0 LINTJSON=0"
+        C_INCLUDE_PATH: /app/include/SDL2
+        CPLUS_INCLUDE_PATH: /app/include/SDL2
     build-commands:
       - sed -i "/#WARNINGS = -w/c WARNINGS = -w" Makefile
       - make -j $FLATPAK_BUILDER_N_JOBS $MAKE_ARGS
