@@ -11,6 +11,9 @@ finish-args:
   - --device=dri
 
 modules:
+  - shared-modules/SDL2/SDL2_image.json
+  - shared-modules/SDL2/SDL2_ttf.json
+
   - name: cataclysm-tiles
     buildsystem: simple
     build-options:
