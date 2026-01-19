@@ -22,6 +22,6 @@ modules:
       - make $MAKE_ARGS localization
       - make $MAKE_ARGS install
     sources:
-      - type: git
-        url: https://github.com/CleverRaven/Cataclysm-DDA.git
-        tag: cdda-0.I-2025-09-18-0115
+      - type: archive
+        url: https://github.com/CleverRaven/Cataclysm-DDA/archive/refs/tags/cdda-0.I-2026-01-18-0821.tar.gz
+        sha256: 48cdce0a95e134a4c73cdfbe2ac39c1331e233be510d68d8a3b683a7a8482650
