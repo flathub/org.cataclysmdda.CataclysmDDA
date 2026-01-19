@@ -25,9 +25,14 @@ modules:
       - install -Dm755 data/xdg/org.cataclysmdda.CataclysmDDA.desktop /app/share/applications/org.cataclysmdda.CataclysmDDA.desktop
       - install -Dm644 org.cataclysmdda.CataclysmDDA.appdata.xml /app/share/metainfo/org.cataclysmdda.CataclysmDDA.appdata.xml
     sources:
-      - type: git
-        url: https://github.com/CleverRaven/Cataclysm-DDA.git
-        commit: "08f04fd07f028219a65f2f1fc8e73719dc9c954e"
+      - type: archive
+        url: https://github.com/CleverRaven/Cataclysm-DDA/archive/refs/tags/0.H-RELEASE.tar.gz
+        sha256: 9fbd80d13321321d6ed1f5a736ab874e06d335429f2a51a39eefd2fa51feae68
+        x-checker-data:
+          type: anitya
+          project-id: 15303
+          stable-only: true
+          url-template: https://github.com/CleverRaven/Cataclysm-DDA/archive/refs/tags/$version.tar.gz
       - type: file
         url: https://raw.githubusercontent.com/CleverRaven/Cataclysm-DDA/8747500dfb599e3407ab759609fc983f7ba9efe4/data/xdg/org.cataclysmdda.CataclysmDDA.appdata.xml
         sha256: 701b269393633e4d41efb1c6b09f97bafaa7de629a4ec4ab2f23467c1952b080
