@@ -1,6 +1,6 @@
 id: "org.cataclysmdda.CataclysmDDA"
 runtime: "org.freedesktop.Platform"
-runtime-version: '24.08'
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 command: cataclysm-tiles
 finish-args: 
@@ -11,17 +11,22 @@ finish-args:
   - --device=dri
 
 modules:
+  - shared-modules/SDL2/SDL2_image.json
+  - shared-modules/SDL2/SDL2_ttf.json
+
   - name: cataclysm-tiles
     buildsystem: simple
     build-options:
       env:
         MAKE_ARGS: "PREFIX=/app LANGUAGES=all USE_XDG_DIR=1 TILES=1 SOUND=1 RELEASE=1 RUNTESTS=0 ASTYLE=0 LINTJSON=0"
+        C_INCLUDE_PATH: /app/include/SDL2
+        CPLUS_INCLUDE_PATH: /app/include/SDL2
     build-commands:
       - sed -i "/#WARNINGS = -w/c WARNINGS = -w" Makefile
       - make -j $FLATPAK_BUILDER_N_JOBS $MAKE_ARGS
       - make $MAKE_ARGS localization
       - make $MAKE_ARGS install
     sources:
-      - type: git
-        url: https://github.com/CleverRaven/Cataclysm-DDA.git
-        tag: cdda-0.I-2025-09-18-0115
+      - type: archive
+        url: https://github.com/CleverRaven/Cataclysm-DDA/archive/refs/tags/cdda-0.I-2026-01-18-0821.tar.gz
+        sha256: 48cdce0a95e134a4c73cdfbe2ac39c1331e233be510d68d8a3b683a7a8482650
