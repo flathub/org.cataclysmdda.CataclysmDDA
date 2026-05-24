@@ -18,6 +18,8 @@ modules:
     buildsystem: simple
     build-options:
       cxxflags: -Wno-error=template-body
+      prepend-pkg-config-path: /app/lib64/pkgconfig
+      prepend-ld-library-path: /app/lib64
       env:
         MAKE_ARGS: PREFIX=/app LANGUAGES=all USE_XDG_DIR=1 TILES=1 SOUND=1 RELEASE=1 RUNTESTS=0 ASTYLE=0 LINTJSON=0
     build-commands:
