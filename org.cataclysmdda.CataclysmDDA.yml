@@ -11,8 +11,22 @@ finish-args:
   - --device=dri
 
 modules:
-  - shared-modules/SDL2/SDL2_image.json
-  - shared-modules/SDL2/SDL2_ttf.json
+  - name: SDL3
+    config-opts:
+      - -DSDL_TEST_LIBRARY=OFF
+      - -DSDL_TESTS=OFF
+      - -DSDL_EXAMPLES=OFF
+      - -DSDL_DEPS_SHARED=OFF
+    cleanup:
+      - /include
+      - /lib/cmake
+      - /lib/pkgconfig
+    buildsystem: cmake-ninja
+    builddir: true
+    sources:
+      - type: archive
+        url: https://github.com/libsdl-org/SDL/archive/refs/tags/release-3.4.10.tar.gz
+        sha256: 0dc11d980ba17250200718fa4e28011da293f27ed92f92203afffe396811f307
 
   - name: cataclysm-tiles
     buildsystem: simple
