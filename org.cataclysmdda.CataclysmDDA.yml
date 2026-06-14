@@ -1,9 +1,9 @@
-id: "org.cataclysmdda.CataclysmDDA"
-runtime: "org.freedesktop.Platform"
+id: org.cataclysmdda.CataclysmDDA
+runtime: org.freedesktop.Platform
 runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 command: cataclysm-tiles
-finish-args: 
+finish-args:
   - --socket=pulseaudio
   - --socket=wayland
   - --socket=fallback-x11
@@ -17,16 +17,17 @@ modules:
   - name: cataclysm-tiles
     buildsystem: simple
     build-options:
+      cxxflags: -Wno-error=template-body
+      prepend-pkg-config-path: /app/lib64/pkgconfig
+      prepend-ld-library-path: /app/lib64
       env:
-        MAKE_ARGS: "PREFIX=/app LANGUAGES=all USE_XDG_DIR=1 TILES=1 SOUND=1 RELEASE=1 RUNTESTS=0 ASTYLE=0 LINTJSON=0"
-        C_INCLUDE_PATH: /app/include/SDL2
-        CPLUS_INCLUDE_PATH: /app/include/SDL2
+        MAKE_ARGS: PREFIX=/app LANGUAGES=all USE_XDG_DIR=1 TILES=1 SOUND=1 RELEASE=1 RUNTESTS=0 ASTYLE=0 LINTJSON=0
     build-commands:
-      - sed -i "/#WARNINGS = -w/c WARNINGS = -w" Makefile
       - make -j $FLATPAK_BUILDER_N_JOBS $MAKE_ARGS
       - make $MAKE_ARGS localization
       - make $MAKE_ARGS install
+      - sed -i 's#data/font/#/app/share/cataclysm-dda/font/#g' /app/share/cataclysm-dda/fontdata.json
     sources:
       - type: archive
-        url: https://github.com/CleverRaven/Cataclysm-DDA/archive/refs/tags/cdda-0.I-2026-01-18-0821.tar.gz
-        sha256: 48cdce0a95e134a4c73cdfbe2ac39c1331e233be510d68d8a3b683a7a8482650
+        url: https://github.com/CleverRaven/Cataclysm-DDA/archive/refs/tags/0.I.tar.gz
+        sha256: 1e4a6e1f70d805d01c97c71294eb45aad47f56f1e895fa783127e20298ee3249
