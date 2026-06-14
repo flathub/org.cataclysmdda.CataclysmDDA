@@ -37,6 +37,10 @@ modules:
       env:
         MAKE_ARGS: PREFIX=/app LANGUAGES=all USE_XDG_DIR=1 TILES=1 SOUND=1 RELEASE=1 RUNTESTS=0 ASTYLE=0 LINTJSON=0
     build-commands:
+      - |
+        if [ "$FLATPAK_ARCH" = "aarch64" ]; then
+          sed -i 's# CFLAGS += -mcx16##g; s# CXXFLAGS += -mcx16##g' Makefile
+        fi
       - make -j $FLATPAK_BUILDER_N_JOBS $MAKE_ARGS
       - make $MAKE_ARGS localization
       - make $MAKE_ARGS install
