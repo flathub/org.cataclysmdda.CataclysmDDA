@@ -29,5 +29,5 @@ modules:
       - sed -i 's#data/font/#/app/share/cataclysm-dda/font/#g' /app/share/cataclysm-dda/fontdata.json
     sources:
       - type: archive
-        url: https://github.com/CleverRaven/Cataclysm-DDA/archive/refs/tags/0.I.tar.gz
-        sha256: 1e4a6e1f70d805d01c97c71294eb45aad47f56f1e895fa783127e20298ee3249
+        url: https://github.com/CleverRaven/Cataclysm-DDA/archive/refs/tags/cdda-experimental-2026-06-14-1053.tar.gz
+        sha256: 26b5343743e19d85dbb05bbfc9f85d1130426c00a38e6ad6cc833b6bac7a53f7
