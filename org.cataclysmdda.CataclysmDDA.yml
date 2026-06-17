@@ -53,15 +53,11 @@ modules:
       env:
         MAKE_ARGS: PREFIX=/app LANGUAGES=all USE_XDG_DIR=1 TILES=1 SOUND=1 RELEASE=1 RUNTESTS=0 ASTYLE=0 LINTJSON=0
     build-commands:
-      - |
-        if [ "$FLATPAK_ARCH" = "aarch64" ]; then
-          sed -i 's# CFLAGS += -mcx16##g; s# CXXFLAGS += -mcx16##g' Makefile
-        fi
       - make -j $FLATPAK_BUILDER_N_JOBS $MAKE_ARGS
       - make $MAKE_ARGS localization
       - make $MAKE_ARGS install
       - sed -i 's#data/font/#/app/share/cataclysm-dda/font/#g' /app/share/cataclysm-dda/fontdata.json
     sources:
       - type: archive
-        url: https://github.com/CleverRaven/Cataclysm-DDA/archive/refs/tags/cdda-experimental-2026-06-14-1053.tar.gz
-        sha256: 26b5343743e19d85dbb05bbfc9f85d1130426c00a38e6ad6cc833b6bac7a53f7
+        url: https://github.com/CleverRaven/Cataclysm-DDA/archive/refs/tags/cdda-experimental-2026-06-17-1213.tar.gz
+        sha256: 37bdea2f71a54a2cfd9ff6bafcaa57baea98d68844d055b7e9e6f18b912f427a
