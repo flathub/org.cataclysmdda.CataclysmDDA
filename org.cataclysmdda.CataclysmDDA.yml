@@ -13,6 +13,7 @@ finish-args:
 modules:
   - shared-modules/SDL2/SDL2_image.json
   - shared-modules/SDL2/SDL2_ttf.json
+  - shared-modules/SDL2/SDL2_mixer.json
 
   - name: cataclysm-tiles
     buildsystem: simple
