@@ -17,7 +17,7 @@ modules:
   - name: cataclysm-tiles
     buildsystem: simple
     build-options:
-      cxxflags: -Wno-error=template-body
+      cxxflags: -Wno-error=template-body -Wno-error=sfinae-incomplete
       prepend-pkg-config-path: /app/lib64/pkgconfig
       prepend-ld-library-path: /app/lib64
       env:
