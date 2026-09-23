@@ -22,10 +22,13 @@ modules:
           RUNTESTS=0 ASTYLE=0 LINTJSON=0
     build-commands:
       - make -j $FLATPAK_BUILDER_N_JOBS $MAKE_ARGS
-      - make $MAKE_ARGS localization
       - make $MAKE_ARGS install
       - sed -i 's#data/font/#/app/share/cataclysm-dda/font/#g' /app/share/cataclysm-dda/fontdata.json
     sources:
       - type: archive
-        url: https://github.com/CleverRaven/Cataclysm-DDA/archive/refs/tags/cdda-experimental-2026-09-22-0745.tar.gz
-        sha256: 4075a45da35d5611d36bfd23e08a8993834bf93b99e8a729d00d16ef9c3791fa
+        url: https://github.com/CleverRaven/Cataclysm-DDA/archive/refs/tags/cdda-experimental-2026-09-23-0546.tar.gz
+        sha256: f3d606ee5f6dbf7135ba72df9da0b0f6d31d066288f70d7094ef194797461b4f
+      - type: archive
+        url: https://github.com/CleverRaven/Cataclysm-DDA/releases/download/cdda-experimental-2026-09-23-0546/cdda-translations-2026-09-23-0546.tar.gz
+        sha256: d685b5296fe9f4b457aeca4914e5b8bde73dda851658edb6d6caa692311cfc68
+        strip-components: 0
