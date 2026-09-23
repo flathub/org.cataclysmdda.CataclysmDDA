@@ -28,3 +28,7 @@ modules:
       - type: archive
         url: https://github.com/CleverRaven/Cataclysm-DDA/archive/refs/tags/cdda-experimental-2026-09-23-0546.tar.gz
         sha256: f3d606ee5f6dbf7135ba72df9da0b0f6d31d066288f70d7094ef194797461b4f
+      - type: archive
+        url: https://github.com/CleverRaven/Cataclysm-DDA/releases/download/cdda-experimental-2026-09-23-0546/cdda-translations-2026-09-23-0546.tar.gz
+        sha256: d685b5296fe9f4b457aeca4914e5b8bde73dda851658edb6d6caa692311cfc68
+        strip-components: 0
